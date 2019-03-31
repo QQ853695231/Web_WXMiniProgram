@@ -1,19 +1,17 @@
 <template>
     <div>
-      <i-tab-bar :current="current"
-                 color="#f759ab"
-                 @change="handleChange"
-                 fixed>
-        <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页">1
-        </i-tab-bar-item>
-        <i-tab-bar-item key="group" icon="group" current-icon="group_fill" title="朋友">2</i-tab-bar-item>
-        <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知">3</i-tab-bar-item>
-        <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的">4</i-tab-bar-item>
+      <div v-show="current === 'homepage'">homepage</div>
+      <div v-show="current === 'group'">group</div>
+      <div v-show="current === 'remind'">remind</div>
+      <div v-show="current === 'mine'">mine</div>
+      <i-tab-bar :current="current" color="#f759ab"  @change="handleChange"  fixed>
+        <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+        <i-tab-bar-item key="group" icon="group" current-icon="group_fill" title="朋友"></i-tab-bar-item>
+        <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
+        <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
       </i-tab-bar>
-
-
       <i-toast id="toast" />
-      <i-spin size="large" fix v-if="spinShow"></i-spin>
+      <i-spin size="large" fix v-if="spinShow"/>
   </div>
 </template>
 

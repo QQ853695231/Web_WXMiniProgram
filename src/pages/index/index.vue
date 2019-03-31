@@ -6,7 +6,7 @@
         <i-col span="8" i-class="col-class">col-8</i-col>
         <i-col span="8" i-class="col-class">col-8</i-col>
       </i-row>
-
+      <i-toast id="toast" />
       <i-spin size="large" fix v-if="spinShow"></i-spin>
   </div>
 </template>
@@ -14,6 +14,7 @@
 <script>
   import card from '@/components/card'
   import loginPlatformAfterWxLogin from '../../api/user/User'
+  import {$Toast} from '../../../static/iview/base/index';
 
   export default {
     data () {
@@ -48,7 +49,21 @@
             // console.log(res)
             that.spinShow = true
             loginPlatformAfterWxLogin(res.code).then(res => {
-              console.log(res)
+              if (res.status === 111) {
+                $Toast({
+                  content: '请先完善个人信息',
+                  type: 'success',
+                  icon: 'success_fill',
+                  duration: 2
+                })
+
+                setTimeout(() => {
+                  mpvue.navigateTo({ url: '../personal/main' })
+                }, 2000)
+
+              } else {
+                mpvue.navigateTo({ url: '../logs/main' })
+              }
             })
           },
           fail (res) {
@@ -58,8 +73,6 @@
             that.spinShow = false
           }
         })
-        // mpvue.navigateTo({ url: '../personal/main' })
-        // throw {message: 'custom test'}
       }
     },
 

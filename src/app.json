@@ -4,14 +4,14 @@
     "pages/logs/main",
     "pages/counter/main",
     "pages/personal/main"
-
   ],
   "usingComponents": {
     "i-button": "../static/iview/button/index",
     "i-row": "../static/iview/row/index",
     "i-col": "../static/iview/col/index",
     "i-input": "../static/iview/input/index",
-    "i-spin": "../static/iview/spin/index"
+    "i-spin": "../static/iview/spin/index",
+    "i-toast": "../static/iview/toast/index"
   },"window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

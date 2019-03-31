@@ -62,7 +62,10 @@
                 }, 2000)
 
               } else {
+
                 mpvue.navigateTo({ url: '../logs/main' })
+                console.log(res)
+                console.log(5555)
               }
             })
           },

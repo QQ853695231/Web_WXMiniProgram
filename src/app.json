@@ -11,7 +11,9 @@
     "i-col": "../static/iview/col/index",
     "i-input": "../static/iview/input/index",
     "i-spin": "../static/iview/spin/index",
-    "i-toast": "../static/iview/toast/index"
+    "i-toast": "../static/iview/toast/index",
+    "i-tab-bar": "../static/iview/tab-bar/index",
+    "i-tab-bar-item": "../static/iview/tab-bar-item/index"
   },"window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

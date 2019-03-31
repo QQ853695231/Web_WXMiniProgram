@@ -1,11 +1,17 @@
 <template>
     <div>
-      <i-button type="info">33333</i-button>
-      <i-row>
-        <i-col span="8" i-class="col-class">col-8</i-col>
-        <i-col span="8" i-class="col-class">col-8</i-col>
-        <i-col span="8" i-class="col-class">col-8</i-col>
-      </i-row>
+      <i-tab-bar :current="current"
+                 color="#f759ab"
+                 @change="handleChange"
+                 fixed>
+        <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页">1
+        </i-tab-bar-item>
+        <i-tab-bar-item key="group" icon="group" current-icon="group_fill" title="朋友">2</i-tab-bar-item>
+        <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知">3</i-tab-bar-item>
+        <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的">4</i-tab-bar-item>
+      </i-tab-bar>
+
+
       <i-toast id="toast" />
       <i-spin size="large" fix v-if="spinShow"></i-spin>
   </div>
@@ -21,6 +27,7 @@
       return {
         motto: 'Hello miniprograme',
         spinShow: false,
+        current: 'homepage',
         userInfo: {
           nickName: 'mpvue',
           avatarUrl: 'http://mpvue.com/assets/logo.png'
@@ -33,6 +40,9 @@
     },
 
     methods: {
+      handleChange(e) {
+        this.current = e.mp.detail.key
+      },
       bindViewTap () {
         const url = '../logs/main'
         if (mpvuePlatform === 'wx') {
@@ -46,7 +56,6 @@
         this.spinShow = true
         wx.login({
           success (res) {
-            // console.log(res)
             that.spinShow = true
             loginPlatformAfterWxLogin(res.code).then(res => {
               if (res.status === 111) {
@@ -64,8 +73,6 @@
               } else {
 
                 mpvue.navigateTo({ url: '../logs/main' })
-                console.log(res)
-                console.log(5555)
               }
             })
           },
